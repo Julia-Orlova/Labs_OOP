@@ -1,0 +1,7 @@
+package lab6;
+
+public class PopularSong extends lab6.Song {
+    public PopularSong(String name, int time) {
+        super(name, time);
+    }
+}
