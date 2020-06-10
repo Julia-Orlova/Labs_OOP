@@ -1,0 +1,29 @@
+package lab6;
+
+public abstract class Song {
+    private String name;
+    private int time;
+
+    @Override
+    public boolean equals(Object obj) {
+        return obj.toString().equals(toString());
+    }
+
+    public Song(String name, int time) {
+        this.name = name;
+        this.time = time;
+    }
+
+    public int a() {
+        return time;
+    }
+
+    public int getTime() {
+        return time;
+    }
+
+    @Override
+    public String toString() {
+        return name + ", " + this.getClass().getSimpleName() + ", "+ time + " minute.";
+    }
+}
