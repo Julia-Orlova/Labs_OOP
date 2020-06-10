@@ -1,0 +1,81 @@
+package lab6;
+
+import java.util.*;
+
+public class Albom {
+    private static int max = 12;
+    private Song[] songs = new Song[max];
+    private int calculator;
+
+    public void add(Song song){
+        songs[calculator++] = song;
+    }
+
+    @Override
+    public String toString() {
+        String result = "-------------- Albom --------------\n";
+        for (int i = 0; i < calculator; i++) {
+            result += i + 1 + ". " + songs[i].toString() + "\n";
+        }
+        return result + "-----------------------------------";
+    }
+
+    public int a() {
+        int result = 0;
+        for (Song song : songs) {
+            if (song != null) {
+                result += song.a();
+            }
+        }
+        return result;
+    }
+
+    public Song[] getSongsInRange(double from, double to)
+    {
+        // знайдемо кількість композицій, щоб зформувати масив
+        Song[] songsInRange = new Song[getAmountOfSongsInRange(from, to)];
+        int index = 0;
+
+        for (int i = 0; i < this.songs.length; i++) {
+            // перевіримо, чи це пісня
+            if(this.songs[i] instanceof Song) {
+                if(this.songs[i].getTime() > from && this.songs[i].getTime() < to) {
+                    songsInRange[index] = this.songs[i];
+                    index++;
+                }
+            }
+        }
+        return songsInRange;
+    }
+
+    private int getAmountOfSongsInRange(double from, double to)
+    {
+        // кількість пісень
+        int counter = 0;
+        // Якща довжина композиції належить заданому діапазону
+        for (int i = 0; i < this.songs.length; i++) {
+            if(this.songs[i] instanceof Song) {
+                if (this.songs[i].getTime() > from && this.songs[i].getTime() < to) {
+                    counter++;
+                }
+            }
+        }
+        return counter;
+    }
+
+    //сортування композицій за довжиною
+    public void sortByTime(){
+        //list -- варіант колекції, в якій є індексація та послідовність
+        List<Song> songsList = new ArrayList();
+        for (Song song : songs) {
+            //якщо компонент альбому є піснею, то додаємо його у колекцію пісень
+            if (song instanceof Song){
+                songsList.add((Song) song);
+            }
+        }
+        //порівнюємо за довжиною, створення методу getTime()
+        //для кожної композиції використовується її довжина як критерій сортування
+        songsList.sort(Comparator.comparing(Song::getTime));
+        System.out.println(songsList);
+    }
+}
