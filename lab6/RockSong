@@ -1,0 +1,7 @@
+package lab6;
+
+class RockSong extends Song {
+    public RockSong(String name, int time) {
+        super(name, time);
+    }
+}
