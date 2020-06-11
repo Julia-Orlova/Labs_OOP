@@ -1,29 +1,11 @@
 package lab6;
 
-public abstract class Song {
-    private String name;
-    private int time;
+import lab8.WrongNameValueException;
+import lab8.WrongDurationValueException;
 
-    @Override
-    public boolean equals(Object obj) {
-        return obj.toString().equals(toString());
-    }
-
-    public Song(String name, int time) {
-        this.name = name;
-        this.time = time;
-    }
-
-    public int a() {
-        return time;
-    }
-
-    public int getTime() {
-        return time;
-    }
-
-    @Override
-    public String toString() {
-        return name + ", " + this.getClass().getSimpleName() + ", "+ time + " minute.";
+public class ClassicSong extends Song {
+    public ClassicSong(String name, int time)
+            throws WrongNameValueException, WrongDurationValueException {
+        super(name, time);
     }
 }
