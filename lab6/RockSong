@@ -1,7 +1,11 @@
 package lab6;
 
-class RockSong extends Song {
-    public RockSong(String name, int time) {
+import lab8.WrongNameValueException;
+import lab8.WrongDurationValueException;
+
+public class RockSong extends Song {
+    public RockSong(String name, int time)
+            throws WrongNameValueException, WrongDurationValueException {
         super(name, time);
     }
 }
